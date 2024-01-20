@@ -1,0 +1,41 @@
+.mat-elevation-z8{
+    box-shadow: none;
+}
+
+.table-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+::ng-deep mat-paginator{
+    width: 400px;
+}
+
+form{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+}
+
+label{
+    border: 1px solid black;
+    width: 255px;
+    height: 50px;
+}
+
+input{
+    display: block;
+    width: 255px;
+    height: 50px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color: white;
+}
+
+.cities_nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}

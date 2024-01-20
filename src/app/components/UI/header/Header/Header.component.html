@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="title">
+    <h1 class="title_text">ГЕОИНФОРМАЦИЯ</h1>
+    <mat-radio-group color="primary">
+      <mat-radio-button value="RU">RU</mat-radio-button>
+      <mat-radio-button value="EN">EN</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <nav mat-tab-nav-bar [tabPanel] = "tabPanel" class="nav-tabs">
+    @for (link of links; track link) {
+      <a mat-tab-link
+        (click)="activeLink = link"
+        [active]="activeLink == link"
+        [routerLink]="[link.path]"
+        > {{link.title}}</a>
+    }
+  </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+  <hr>
+  
+</div>

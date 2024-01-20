@@ -1,0 +1,81 @@
+<div class="table-wrapper">
+  <form>
+      <mat-icon matTextPrefix>search</mat-icon>
+      <input type="search" (change)="onSearch($event)" placeholder="Найти"/>
+  </form>
+  
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="CountryID">
+      <th mat-header-cell *matHeaderCellDef> ID страны </th>
+        <td mat-cell *matCellDef="let element" style="height: 55px; display: flex; flex-direction: row; justify-content: space-between; align-items: center"> 
+          {{element.wikiDataId}} 
+          <a (click) = "changeSelectedCountry({code: element.code, name: element.name, wikiDataId: element.wikiDataId})"><mat-icon >open_in_new</mat-icon></a>
+        </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Наименование </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="CountryCode">
+      <th mat-header-cell *matHeaderCellDef> Код страны </th>
+      <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="CountryCurrency">
+      <th mat-header-cell *matHeaderCellDef> Коды валют </th>
+      <td mat-cell *matCellDef="let element"> {{formatedCurrencyCodes(element.currencyCodes)}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="totalCount" [pageIndex]="page" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="onTableDataChange($event)" aria-label="Select page">
+  </mat-paginator>
+</div>
+
+
+
+
+
+
+
+<!--
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID страны</th>
+      <th scope="col">Наименование</th>
+      <th scope="col">Код страны</th>
+      <th scope="col">Коды валют</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let element of dataSource
+          | paginate
+            : {
+                itemsPerPage: 5.1,
+                currentPage: page,
+                totalItems: totalCount
+              }
+      "
+    >
+      <td scope="row">{{ element.wikiDataId}}</td>
+      <td>{{ element.name }}</td>
+      <td>{{ element.code }}</td>
+      <td>{{ [element.currencyCodes] }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-center">
+  <pagination-controls
+    (pageChange)="onTableDataChange($event)"
+  ></pagination-controls>
+</div>
+-->
