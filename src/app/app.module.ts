@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CitiesComponent } from './components/cities/Cities.component';
-import { CountriesComponent } from './components/countries/Countries/Countries.component';
-import { HeaderComponent } from './components/UI/header/Header/Header.component';
+import { CountriesComponent } from './components/countries/Countries.component';
+import { HeaderComponent } from './components/UI/header/Header.component';
 import {MatTabsModule} from '@angular/material/tabs'
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
