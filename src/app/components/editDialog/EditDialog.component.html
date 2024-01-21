@@ -5,7 +5,7 @@
       <mat-form-field class="example-full-width" appearance="outline" class="Dialog_region">
         <mat-label class="mat-label">Регион</mat-label>
         <input matInput placeholder="Регион"  [(ngModel)] = 'data.editForm.region'>
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="data.region=''">
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.region=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -14,14 +14,14 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label class="mat-label">Население</mat-label>
             <input matInput placeholder="Население" [(ngModel)] = 'data.editForm.population'>
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="data.population=''">
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.population=''">
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label class="mat-label">Долгота</mat-label>
             <input matInput placeholder="Долгота" [(ngModel)] = 'data.editForm.longitude'>
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="data.longitude=''">
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.longitude=''">
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
@@ -37,7 +37,7 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label class="mat-label">Широта</mat-label>
             <input matInput placeholder="Широта" [(ngModel)] = 'data.editForm.latitude'>
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="data.latitude=''" >
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.latitude=''" >
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
