@@ -1,12 +1,12 @@
 import { Subscription } from 'rxjs';
 import { CountriesService } from '../../services/Countries.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-Countries',
   templateUrl: './Countries.component.html',
-  styleUrls: ['./Countries.component.css']
+  styleUrls: ['./Countries.component.css'],
 })
 export class CountriesComponent implements OnInit {
 

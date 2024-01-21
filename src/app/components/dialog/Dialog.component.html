@@ -1,0 +1,26 @@
+<div class="Dialog">
+  <div class="Dialog_container">
+    <h2 mat-dialog-title>{{data.name}}</h2>
+    <div class="Dialog__content">
+        <div>
+          <label for="">Страна</label>
+          <p>{{data.country}}</p>
+          <label for="">Население</label>
+          <p>{{data.population | number}}</p>
+          <label for="">Долгота</label>
+          <p>{{data.longitude}}</p>
+        </div>
+        <div>
+          <label>Регион</label>
+          <p>{{data.region}}</p>
+          <label for="">Дата основания</label>
+          <p>Не найдено</p>
+          <label for="">Широта</label>
+          <p>{{data.latitude}}</p>
+        </div>
+    </div>
+    <div class="Dialog__btn">
+      <button mat-stroked-button color="primary" mat-dialog-close>Закрыть</button>
+    </div>
+  </div>
+</div>

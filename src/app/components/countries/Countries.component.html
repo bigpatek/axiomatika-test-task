@@ -1,9 +1,9 @@
 <div class="table-wrapper">
-  <form>
-      <mat-icon matTextPrefix>search</mat-icon>
-      <input type="search" (change)="onSearch($event)" placeholder="Найти"/>
-  </form>
-  
+
+  <mat-form-field appearance="outline" id="search-form">
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput (change)="onSearch($event)" placeholder="Поиск">
+  </mat-form-field>
   
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 

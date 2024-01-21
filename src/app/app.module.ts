@@ -1,3 +1,4 @@
+import { TuiRootModule } from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -20,6 +21,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { DialogComponent } from './components/dialog/Dialog.component';
+import { EditDialogComponent } from './components/editDialog/EditDialog.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
     CitiesComponent,
     CountriesComponent,
     HeaderComponent,
+    DialogComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +54,13 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatFormFieldModule,
     FormsModule,
-    MatSelectModule
-
-  ],
+    MatSelectModule,
+    MatDialogModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+],
   providers: [],
   bootstrap: [AppComponent]
 })

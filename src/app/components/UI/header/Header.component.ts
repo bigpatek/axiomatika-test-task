@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CountriesService } from '../../../services/Countries.service';
 
 @Component({
   selector: 'app-Header',
@@ -9,11 +10,12 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-  links = [
+  public links = [
     {path: '/countries', title: 'Страны'},
     {path: '/cities', title: 'Города'}
   ];
-  activeLink = this.links[0];
+  
+  public activeLink = this.links[0];
 
   ngOnInit() {
   }

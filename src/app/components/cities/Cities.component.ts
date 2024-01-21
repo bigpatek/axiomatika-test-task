@@ -2,6 +2,9 @@ import { CountriesService } from './../../services/Countries.service';
 import { Subscription } from 'rxjs';
 import { CitiesService } from './../../services/Cities.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/Dialog.component';
+import { EditDialogComponent } from '../editDialog/EditDialog.component';
 
 @Component({
   selector: 'app-Cities',
@@ -10,7 +13,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class CitiesComponent implements OnInit {
 
-  constructor(private CitiesService: CitiesService, private CountriesService: CountriesService) { }
+  constructor(private CitiesService: CitiesService, private CountriesService: CountriesService, public dialog: MatDialog) { }
 
   displayedColumns: string[] = ['Country', 'name', 'Region', 'Population', 'Btns'];
 
@@ -53,7 +56,6 @@ export class CitiesComponent implements OnInit {
   fetchCountries(): void{
     this.countriesSubsription = this.CountriesService.getCountries(this.page*10, 10).subscribe((data) => {
       this.countriesData = data.data;
-      console.log(this.countriesData)
       if(this.selected){
         if(!this.countriesData.some((obj: any) => obj.wikiDataId === this.selectedCountry.wikiDataId)){
           this.countriesData[0] = this.selectedCountry;
@@ -135,4 +137,59 @@ export class CitiesComponent implements OnInit {
     })
     }
   }
+
+  openDescriptionDialog(city: any){
+    let name = city.name;
+    let country = city.country;
+    let region = city.region;
+    let latitude = city.latitude;
+    let longitude = city.longitude;
+    let population = city.population;
+    this.dialog.open(DialogComponent, {
+      data: {
+        name,
+        country,
+        region,
+        latitude,
+        longitude,
+        population
+      }
+    })
+  }
+
+  editForm: any = {
+    date: "",
+    region: "",
+    latitude: "",
+    longitude: "",
+    population: ""
+  }
+
+  openEditDiscriptionDialog(city: any){
+    let name = city.name;
+    let country = city.country;
+    this.editForm.region = city.region;
+    this.editForm.latitude = city.latitude;
+    this.editForm.longitude = city.longitude;
+    this.editForm.population = city.population;
+    this.editForm.date = city.date ? city.date : "";
+    const dialogRef = this.dialog.open(EditDialogComponent,{
+      data: {
+        name,
+        country,
+        editForm: this.editForm
+      }
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        let index = this.dataSource.map( (el: any )=> el.wikiDataId ).indexOf(city.wikiDataId);
+        this.dataSource[index].region = this.editForm.region;
+        this.dataSource[index].population = this.editForm.population;
+        this.dataSource[index].latitude = this.editForm.latitude;
+        this.dataSource[index].longitude = this.editForm.longitude;
+        this.dataSource[index].date = this.editForm.date;
+      }
+    })
+  }
+
 }

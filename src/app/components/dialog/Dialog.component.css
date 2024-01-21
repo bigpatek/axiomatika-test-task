@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
+.Dialog{
+    width: 450px;
+    height: 350px; 
+    display: flex;
+    box-sizing: border-box !important;
+    border-radius: 100px !important;
+    flex-direction: column;
+}
+
+.Dialog__content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 25px 0px 25px;
+}
+
+label{
+    color: grey;
+    font-family: Manrope;
+}
+
+p, h2{
+    font-family: Manrope;
+}
+
+h2{
+    justify-content: flex-start;
+}
+
+.Dialog__content div + div{
+    margin-left: 88px;
+}
+
+.Dialog__btn{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    width: 100px;
+    height: 44px;
+    bottom: 25px;
+    right: 25px;
+}

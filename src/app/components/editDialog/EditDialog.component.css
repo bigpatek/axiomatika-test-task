@@ -1,0 +1,28 @@
+.Dialog{
+    padding: 25px;
+    width: 550px;
+    height: 350px; 
+}
+
+.Dialog__btns{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}
+
+.Dialog__btns button + button{
+    margin-left: 12px;
+}
+
+.Dialog_edits{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Dialog_region{
+    display: flex;
+    padding-right: 10px;
+}
+

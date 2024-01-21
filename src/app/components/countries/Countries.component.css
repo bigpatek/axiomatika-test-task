@@ -11,26 +11,9 @@
     width: 400px;
 }
 
-form{
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-}
 
-label{
-    border: 1px solid black;
+#search-form{
     width: 255px;
-    height: 50px;
-}
-
-input{
-    display: block;
-    width: 255px;
-    height: 50px;
-}
-
-.mdc-text-field--filled:not(.mdc-text-field--disabled){
-    background-color: white;
 }
 
 a{
