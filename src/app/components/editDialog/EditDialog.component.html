@@ -3,50 +3,53 @@
     <h2 mat-dialog-title>{{data.name}}</h2>
     <div class="Dialog_content">
       <mat-form-field class="example-full-width" appearance="outline" class="Dialog_region">
-        <mat-label class="mat-label">Регион</mat-label>
+        <mat-label class="mat-label">{{'CITIES.region' | translate}}</mat-label>
         <input matInput placeholder="Регион"  [(ngModel)] = 'data.editForm.region'>
         <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.region=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
       <div class="Dialog_edits">
-        <div>
+        <div class="Dialog_edits_1">
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label class="mat-label">Население</mat-label>
-            <input matInput placeholder="Население" [(ngModel)] = 'data.editForm.population'>
+            <mat-label class="mat-label">{{'CITIES.population' | translate}}</mat-label>
+            <input matInput placeholder="Население" [(ngModel)] = 'data.editForm.population' [formControl] = "data.populationFormControl" [errorStateMatcher]="data.matcher">
             <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.population=''">
               <mat-icon>close</mat-icon>
             </button>
+            <mat-error *ngIf="data.populationFormControl.hasError('pattern')">{{'CITIES.pError' | translate}}</mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label class="mat-label">Долгота</mat-label>
-            <input matInput placeholder="Долгота" [(ngModel)] = 'data.editForm.longitude'>
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.longitude=''">
+            <mat-label class="mat-label">{{'CITIES.longitude' | translate}}</mat-label>
+            <input matInput placeholder="Долгота" [(ngModel)] = 'data.editForm.longitude' [formControl] = "data.longitudeFormControl" [errorStateMatcher]="data.matcher">
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.longitude=''" >
               <mat-icon>close</mat-icon>
             </button>
+            <mat-error *ngIf="data.longitudeFormControl.hasError('pattern')">{{'CITIES.lError' | translate}}</mat-error>
           </mat-form-field>
         </div>
-        <div>
+        <div class="Dialog_edits_2">
           <mat-form-field appearance="outline">
-            <mat-label>Дата основания</mat-label>
+            <mat-label>{{'CITIES.date' | translate}}</mat-label>
             <input matInput [matDatepicker]="picker" [(ngModel)] = 'data.editForm.date'>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
           
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label class="mat-label">Широта</mat-label>
-            <input matInput placeholder="Широта" [(ngModel)] = 'data.editForm.latitude'>
+            <mat-label class="mat-label">{{'CITIES.latitude' | translate}}</mat-label>
+            <input matInput placeholder="Широта" [(ngModel)] = 'data.editForm.latitude' [formControl] = "data.latitudeFormControl" [errorStateMatcher]="data.matcher">
             <button matSuffix mat-icon-button aria-label="Clear" (click)="data.editForm.latitude=''" >
               <mat-icon>close</mat-icon>
             </button>
+            <mat-error *ngIf="data.latitudeFormControl.hasError('pattern')">{{'CITIES.lError' | translate}}</mat-error>
           </mat-form-field>
         </div>
       </div>
     </div>
     <div class="Dialog__btns">
-      <button mat-button mat-dialog-close color="warn">Отменить</button>
-      <button mat-flat-button [mat-dialog-close]="true" color="primary">Сохранить</button>
+      <button mat-button mat-dialog-close color="warn">{{'CITIES.cancel' | translate}}</button>
+      <button mat-flat-button [mat-dialog-close]="true" color="primary">{{'CITIES.save' | translate}}</button>
     </div>
   </div>
 </div>

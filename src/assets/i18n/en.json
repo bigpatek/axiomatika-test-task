@@ -1,0 +1,33 @@
+{
+    "HEADER": {
+        "title": "GEOINFORMATION",
+        "cities" : "Cities",
+        "countries" : "Countries"
+    },
+    "COUNTRIES" : {
+        "search" : "Search",
+        "ID": "Country ID",
+        "name" : "Name",
+        "code" : "Country code",
+        "currencyCodes" : "Currency codes"
+    },
+    "CITIES" : {
+        "search" : "Search",
+        "country": "Country",
+        "name" : "Name",
+        "region": "Region",
+        "population": "Population",
+        "longitude": "Longitude",
+        "latitude": "Latitude",
+        "date": "Date of foundation",
+        "close": "Close",
+        "cancel": "Cancel",
+        "save": "Save",
+        "mm" : "mm.",
+        "k" : "k.",
+        "ppl" : "ppl.",
+        "pError" : "Enter a positive number",
+        "lError" : "Enter a fractional number",
+        "dError" : "Incorrect date"
+    }
+}

@@ -3,24 +3,24 @@
     <h2 mat-dialog-title>{{data.name}}</h2>
     <div class="Dialog__content">
         <div>
-          <label for="">Страна</label>
+          <label for="">{{'CITIES.country' | translate}}</label>
           <p>{{data.country}}</p>
-          <label for="">Население</label>
+          <label for="">{{'CITIES.population' | translate}}</label>
           <p>{{data.population | number}}</p>
-          <label for="">Долгота</label>
+          <label for="">{{'CITIES.longitude' | translate}}</label>
           <p>{{data.longitude}}</p>
         </div>
         <div>
-          <label>Регион</label>
+          <label>{{'CITIES.region' | translate}}</label>
           <p>{{data.region}}</p>
-          <label for="">Дата основания</label>
-          <p>Не найдено</p>
-          <label for="">Широта</label>
+          <label for="">{{'CITIES.date' | translate}}</label>
+          <p>{{data.date ? (data.date).toLocaleDateString("en-US") : "не найдено"}}</p>
+          <label for="">{{'CITIES.latitude' | translate}}</label>
           <p>{{data.latitude}}</p>
         </div>
     </div>
     <div class="Dialog__btn">
-      <button mat-stroked-button color="primary" mat-dialog-close>Закрыть</button>
+      <button mat-stroked-button color="primary" mat-dialog-close>{{'CITIES.close' | translate}}</button>
     </div>
   </div>
 </div>

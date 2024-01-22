@@ -2,6 +2,7 @@ import { Subscription } from 'rxjs';
 import { CountriesService } from '../../services/Countries.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-Countries',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CountriesComponent implements OnInit {
 
-  constructor(private CountriesService: CountriesService, private router: Router) { }
+  constructor(private CountriesService: CountriesService, private router: Router, private translate: TranslateService) { }
 
   displayedColumns: string[] = ['CountryID', 'name', 'CountryCode', 'CountryCurrency'];
 

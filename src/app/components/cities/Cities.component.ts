@@ -5,6 +5,17 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/Dialog.component';
 import { EditDialogComponent } from '../editDialog/EditDialog.component';
+import { LangService } from '../../services/Lang.service';
+import { TranslateService } from '@ngx-translate/core';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-Cities',
@@ -13,7 +24,22 @@ import { EditDialogComponent } from '../editDialog/EditDialog.component';
 })
 export class CitiesComponent implements OnInit {
 
-  constructor(private CitiesService: CitiesService, private CountriesService: CountriesService, public dialog: MatDialog) { }
+  mm: string;
+  k: string;
+  ppl: string;
+
+  constructor(private CitiesService: CitiesService, private CountriesService: CountriesService, private translate: TranslateService, public dialog: MatDialog) {
+    this.translate.stream('CITIES.mm').subscribe(val => {
+      this.mm = val;
+    });
+    this.translate.stream('CITIES.k').subscribe(val => {
+      this.k = val;
+    });
+    this.translate.stream('CITIES.ppl').subscribe(val => {
+      this.ppl = val;
+    });
+
+  }
 
   displayedColumns: string[] = ['Country', 'name', 'Region', 'Population', 'Btns'];
 
@@ -33,6 +59,7 @@ export class CitiesComponent implements OnInit {
   selectedCountry: any;
 
   ngOnInit(): void {
+    
     this.selectedCountry = this.CountriesService.selectedCountry;
     if(this.selectedCountry){
       this.selected = this.selectedCountry.wikiDataId;
@@ -112,15 +139,15 @@ export class CitiesComponent implements OnInit {
 
   formatedPopulation(population: number){
     if(population > 10000 && population < 1000000){
-        return `${Math.round(population/1000)} тыс.`
+        return `${Math.round(population/1000)} ${this.k}`
     }
     if(population > 1000000){
-        return `${(population/1000000).toFixed(3)} млн.`
+        return `${(population/1000000).toFixed(3)} ${this.mm}`
     }
     if(population < 1000){
-        return `${population} чел.`
+        return `${population} ${this.ppl}`
     }
-    else return `${population} тыс.`
+    else return `${population} ${this.k}`
   }
 
   onSelect(){
@@ -145,6 +172,7 @@ export class CitiesComponent implements OnInit {
     let latitude = city.latitude;
     let longitude = city.longitude;
     let population = city.population;
+    let date = city.date ? city.date : "";
     this.dialog.open(DialogComponent, {
       data: {
         name,
@@ -152,7 +180,8 @@ export class CitiesComponent implements OnInit {
         region,
         latitude,
         longitude,
-        population
+        population,
+        date
       }
     })
   }
@@ -165,6 +194,7 @@ export class CitiesComponent implements OnInit {
     population: ""
   }
 
+
   openEditDiscriptionDialog(city: any){
     let name = city.name;
     let country = city.country;
@@ -173,14 +203,23 @@ export class CitiesComponent implements OnInit {
     this.editForm.longitude = city.longitude;
     this.editForm.population = city.population;
     this.editForm.date = city.date ? city.date : "";
+    let populationFormControl = new FormControl(this.editForm.population, [Validators.pattern(/^[1-9]\d*$/)]);
+    let longitudeFormControl = new FormControl(this.editForm.longitude, [Validators.pattern(/-?\d+/)]);
+    let latitudeFormControl = new FormControl(this.editForm.latitude, [Validators.pattern(/^-?[0-9][0-9,\.]+$/)]);
+    let matcher = new MyErrorStateMatcher();
     const dialogRef = this.dialog.open(EditDialogComponent,{
       data: {
         name,
         country,
-        editForm: this.editForm
+        editForm: this.editForm,
+        populationFormControl,
+        longitudeFormControl,
+        latitudeFormControl,
+        matcher
       }
     })
     dialogRef.afterClosed().subscribe(result => {
+      console.log(this.editForm.population.invalid)
       if(result === true){
         let index = this.dataSource.map( (el: any )=> el.wikiDataId ).indexOf(city.wikiDataId);
         this.dataSource[index].region = this.editForm.region;

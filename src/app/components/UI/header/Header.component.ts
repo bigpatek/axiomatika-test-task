@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CountriesService } from '../../../services/Countries.service';
+import { LangService } from '../../../services/Lang.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-Header',
@@ -8,7 +10,10 @@ import { CountriesService } from '../../../services/Countries.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private LangService: LangService, public translate: TranslateService) { }
+
+  public langs = this.LangService.langs;
+  public activeLang = this.LangService.activeLang;
 
   public links = [
     {path: '/countries', title: 'Страны'},
@@ -20,4 +25,5 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  changeLang = this.LangService.changeLang;
 }
