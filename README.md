@@ -1,27 +1,42 @@
-# AxiTestTask
+# Тестовое задание для компании axiomatika - Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
+Веб-приложение с использованием Angular и Angular Material из двух страниц (каждая страница должна открываться по-собственному url) 
 
-## Development server
+## Реализованный функционал
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Для списка стран: 
+  1. Получения списка стран по API (/v1/geo/countries) серверной пагинацией
+  2. Отображение полученной информации в таблице
+  3. Фильтрация (поиск) по наименованию
+  4. По нажатию на иконку перехода (в ячейке ID страны) открывать страницу городов с предустановленным фильтром по стране
 
-## Code scaffolding
+Для списка городов: 
+  1. Получения списка стран по API (/v1/geo/cities) серверной пагинацией
+  2. Отображение полученной информации в таблице
+  3. Фильтрация по стране (select/dropdown) и наименованию (поиск)
+  4. По клику на иконку просмотра - открывать в popup для отображения информации по городу
+  5. По клику на иконку редактирования - открывать в popup для редактирования информации по городу
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+А также: 
+  1. Валидация (для полей население, дата основания, долгота, широта, добавить валидацию на допустимые значения) и отображение ошибок на полях формы редактирования
+  2. Сортировка таблиц:
+        Страны - Наименование, Код страны ;
+        Города - Страна, Наименование, Регион, Население
+  3. Выбор количества элементов в таблице
+  4. Отображение отредактированной информации (в таблице и popup-ах) в приоритете с полученной по API
+  5. Локализация интерфейса (русский, английский)
 
-## Build
+  Описание API - https://wirefreethought.github.io/geodb-cities-api-docs/#tag/Geo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  ## Скриншоты
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  1. Страны
+  ![1](https://i.postimg.cc/Cx6629yf/Screenshot-2024-02-05-at-23-42-29-Axi-Test-Task.png)
+  2. Города
+  ![1](https://i.postimg.cc/y7vq9rGK/Screenshot-2024-02-05-at-23-43-43-Axi-Test-Task.png)
+  3. Подробное описание города
+  ![1](https://i.postimg.cc/dq1b9jMy/Screenshot-2024-02-05-at-23-44-09-Axi-Test-Task.png)
+  4. Редактирование информации о городе
+  ![1](https://i.postimg.cc/kqNPM5FB/Screenshot-2024-02-05-at-23-44-24-Axi-Test-Task.png)
+  5. Локализация
+  ![1](https://i.postimg.cc/jtYrrffp/Screenshot-2024-02-05-at-23-44-44-Axi-Test-Task.png)  
